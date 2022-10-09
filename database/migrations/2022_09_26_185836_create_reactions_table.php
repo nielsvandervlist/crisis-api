@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('thumbnail')->nullable();
             $table->boolean('notification');
             $table->dateTime('time');
+            $table->string('src');
             $table->unsignedInteger('participant_id');
             $table->foreign('participant_id')->references('id')->on('participants');
             $table->unsignedInteger('reaction_type_id');

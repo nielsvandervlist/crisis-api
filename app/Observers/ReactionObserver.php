@@ -11,8 +11,6 @@ class ReactionObserver
     public function created(Reaction $reaction)
     {
         $notification = Notification::create([
-            'title' => $reaction->title,
-            'src' => $reaction->src,
             'status' => false,
             'participant_id' => $reaction->participant_id,
             'reaction_id' => $reaction->id,

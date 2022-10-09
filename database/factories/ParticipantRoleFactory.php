@@ -19,7 +19,7 @@ class ParticipantRoleFactory extends Factory
         return [
             'name' => $this->faker->name,
             'label' => $this->faker->name,
-            'permission' => json_encode(["key" => "value"])
+            'permissions' => json_encode(["key" => "value"])
         ];
     }
 }

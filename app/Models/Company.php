@@ -11,4 +11,6 @@ class Company extends Model
     use HasFactory, GetParams;
 
     protected $fillable = ['name', 'user_id', 'description'];
+
+    protected $params = ['user_id'];
 }

@@ -15,8 +15,6 @@ return new class extends Migration
     {
         Schema::create('notifications', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('title');
-            $table->string('src');
             $table->boolean('status');
             $table->unsignedInteger('participant_id');
             $table->foreign('participant_id')->references('id')->on('participants');
