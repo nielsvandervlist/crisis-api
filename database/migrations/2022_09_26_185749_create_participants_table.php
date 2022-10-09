@@ -16,6 +16,8 @@ return new class extends Migration
         Schema::create('participants', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
+            $table->string('hash');
+            $table->string('email');
             $table->string('profile_img')->nullable();
             $table->unsignedInteger('participant_role_id');
             $table->foreign('participant_role_id')->references('id')->on('participant_roles');

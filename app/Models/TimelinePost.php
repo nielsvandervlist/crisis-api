@@ -14,4 +14,12 @@ class TimelinePost extends Model
 
     protected $params = ['timeline_id'];
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function timeline()
+    {
+       return $this->BelongsTo(Timeline::class);
+    }
+
 }

@@ -18,6 +18,8 @@ return new class extends Migration
             $table->string('title');
             $table->dateTime('start_time');
             $table->dateTime('end_time');
+            $table->unsignedInteger('crisis_id');
+            $table->foreign('crisis_id')->references('id')->on('crises');
             $table->unsignedInteger('company_id');
             $table->foreign('company_id')->references('id')->on('companies');
             $table->unsignedInteger('user_id');

@@ -2,9 +2,15 @@
 
 namespace App\Providers;
 
+use App\Models\Crisis;
+use App\Models\Participant;
 use App\Models\Post;
 use App\Models\Reaction;
+use App\Models\TimelinePost;
+use App\Observers\CrisisObserver;
+use App\Observers\ParticipantObserver;
 use App\Observers\ReactionObserver;
+use App\Observers\TimelinePostsObserver;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
@@ -31,6 +37,9 @@ class EventServiceProvider extends ServiceProvider
     public function boot()
     {
         Reaction::observe(ReactionObserver::class);
+        Participant::observe(ParticipantObserver::class);
+        TimelinePost::observe(TimelinePostsObserver::class);
+        Crisis::observe(CrisisObserver::class);
     }
 
     /**

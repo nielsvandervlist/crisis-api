@@ -10,7 +10,15 @@ class Crisis extends Model
 {
     use HasFactory, GetParams;
 
-    protected $fillable = ['title', 'description', 'company_id', 'user_id'];
+    protected $fillable = ['title', 'description', 'company_id', 'user_id', 'status'];
 
     protected $params = ['user_id'];
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function company()
+    {
+        return $this->hasOne(Company::class);
+    }
 }

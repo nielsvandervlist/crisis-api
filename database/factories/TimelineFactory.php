@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\Company;
+use App\Models\Crisis;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -22,6 +23,7 @@ class TimelineFactory extends Factory
             'title' => $this->faker->title,
             'start_time' => $this->faker->dateTime,
             'end_time' => $this->faker->dateTime,
+            'crisis_id' => Crisis::factory()->create()->id,
             'company_id' => Company::factory()->create()->id,
             'user_id' => User::factory()->create()->id
         ];

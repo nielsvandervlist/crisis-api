@@ -17,6 +17,7 @@ return new class extends Migration
             $table->increments('id');
             $table->string('title');
             $table->string('description')->nullable();
+            $table->boolean('status');
             $table->unsignedInteger('company_id');
             $table->foreign('company_id')->references('id')->on('companies');
             $table->unsignedInteger('user_id');

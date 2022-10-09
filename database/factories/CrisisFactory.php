@@ -21,6 +21,7 @@ class CrisisFactory extends Factory
         return [
             'title' => $this->faker->name,
             'description' => $this->faker->text,
+            'status' => false,
             'company_id' => Company::factory()->create()->id,
             'user_id' => User::factory()->create()->id
         ];

@@ -6,6 +6,7 @@ use App\Models\Company;
 use App\Models\ParticipantRole;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Facades\Hash;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Participant>
@@ -21,6 +22,8 @@ class ParticipantFactory extends Factory
     {
         return [
             'name' => $this->faker->name,
+            'hash' => Hash::make(''),
+            'email' => $this->faker->email,
             'profile_img' => $this->faker->url,
             'participant_role_id' => ParticipantRole::factory()->create()->id,
             'user_id' => User::factory()->create()->id,
