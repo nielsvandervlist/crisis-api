@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Events\ReactionCreated;
+use App\Listeners\NotifyUserAboutReaction;
 use App\Models\Crisis;
 use App\Models\Participant;
 use App\Models\Post;
@@ -27,6 +29,9 @@ class EventServiceProvider extends ServiceProvider
         Registered::class => [
             SendEmailVerificationNotification::class,
         ],
+        ReactionCreated::class => [
+            NotifyUserAboutReaction::class,
+        ]
     ];
 
     /**

@@ -4,7 +4,6 @@ namespace Tests\Feature;
 
 use App\Models\Reaction;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
 class NotificationTest extends TestCase
@@ -19,6 +18,17 @@ class NotificationTest extends TestCase
         $reaction = Reaction::factory()->create();
         $this->assertDatabaseHas('notifications', [
             'id' => 1
+        ]);
+    }
+
+    /**
+     * @test
+     */
+    public function itSavesNotificationOnReactionCreated()
+    {
+        $reaction = Reaction::factory()->create();
+        $this->assertDatabaseHas('notifications', [
+            'reaction_id' => $reaction->id,
         ]);
     }
 }
