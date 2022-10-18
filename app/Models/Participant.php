@@ -18,4 +18,9 @@ class Participant extends Model
     {
         return $this->BelongsTo(Company::class);
     }
+
+    public function user()
+    {
+        return$this->belongsTo(User::class);
+    }
 }

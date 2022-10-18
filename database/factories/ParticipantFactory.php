@@ -26,7 +26,7 @@ class ParticipantFactory extends Factory
             'email' => $this->faker->email,
             'profile_img' => $this->faker->url,
             'participant_role_id' => ParticipantRole::factory()->create()->id,
-            'user_id' => User::factory()->create()->id,
+            'user_id' => 12,
             'company_id' => Company::factory()->create()->id,
         ];
     }

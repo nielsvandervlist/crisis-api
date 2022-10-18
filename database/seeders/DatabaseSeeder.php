@@ -6,6 +6,7 @@ namespace Database\Seeders;
 use App\Models\Company;
 use App\Models\Crisis;
 use App\Models\Post;
+use App\Models\Reaction;
 use App\Models\Timeline;
 use App\Models\User;
 use Illuminate\Database\Seeder;
@@ -19,10 +20,11 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        User::factory()->count(10)->create();
-        Company::factory()->count(10)->create();
-        Crisis::factory()->count(10)->create();
-        Post::factory()->count(10)->create();
-        Timeline::factory()->count(10)->create();
+        User::factory()->create();
+        Company::factory()->create();
+        Crisis::factory()->create();
+        Post::factory()->create();
+        Timeline::factory()->create();
+        Reaction::factory()->create();
     }
 }
