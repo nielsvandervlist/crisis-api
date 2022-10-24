@@ -16,13 +16,5 @@ class CrisisObserver
         $timeline = Timeline::params([
             'crisis_id' => $crisis->id
         ])->get();
-
-        $start = $timeline->start_time;
-        $end = $timeline->end_time;
-
-        // Check when post is in time frame
-
-        // Check when crisis is finished
-
     }
 }

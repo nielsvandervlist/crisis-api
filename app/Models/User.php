@@ -7,12 +7,14 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Cache;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Broadcasting\PrivateChannel;
+use Tychovbh\LaravelCrud\Contracts\GetParams;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use HasApiTokens, HasFactory, Notifiable, GetParams;
 
     /**
      * The attributes that are mass assignable.
@@ -24,6 +26,11 @@ class User extends Authenticatable
         'email',
         'password',
     ];
+
+    /**
+     * @var string[]
+     */
+    protected $params = ['email'];
 
     /**
      * The attributes that should be hidden for serialization.

@@ -12,13 +12,14 @@ class Crisis extends Model
 
     protected $fillable = ['title', 'description', 'company_id', 'user_id', 'status'];
 
-    protected $params = ['user_id'];
+    protected $params = ['user_id', 'status'];
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     *
      */
     public function company()
     {
-        return $this->hasOne(Company::class);
+        return $this->belongsTo(Company::class);
     }
 }

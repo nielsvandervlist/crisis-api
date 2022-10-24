@@ -42,7 +42,7 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     MessageRoute::routes();
 });
 
-Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
+Route::middleware(['auth:sanctum', 'online'])->get('/user', function (Request $request) {
     return $request->user();
 });
 

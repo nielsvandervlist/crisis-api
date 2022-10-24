@@ -35,12 +35,12 @@ class RegisterParticipant extends Mailable implements ShouldQueue
     {
         return $this
             ->view('emails.registration.complete', [
-                'link' => config('app.url') . '/broadcasts/' . $this->participant->hash . '/edit',
+                'link' => config('app.url') . '/participants/' . $this->participant->hash . '/edit',
                 'company' => $this->participant->company->name,
                 'name' => $this->participant->name,
             ])
             ->from('admin@example.com', 'Example')
             ->to($this->participant->email, 'Ontvanger')
-            ->subject('Inschrijvingsbevestiging ' . $this->participant->company->name);
+            ->subject('Inschrijvingsbevestiging ' . $this->participant->name);
     }
 }

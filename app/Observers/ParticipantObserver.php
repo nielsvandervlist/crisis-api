@@ -5,6 +5,7 @@ namespace App\Observers;
 use App\Mail\RegisterParticipant;
 use App\Models\Participant;
 use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
 
@@ -20,18 +21,21 @@ class ParticipantObserver
      */
     public function saving(Participant $participant)
     {
+
+        $test = request()->input('email');
+
         if (request()->input('email')) {
             $data = [
                 'name' => request()->input('name'),
                 'email' => request()->input('email'),
-                'role_id' => 1,
+                'password' => str_replace('/', '', Hash::make('plain-text'))
             ];
 
             $participant->user_id = User::firstOrCreate(['email' => request()->input('email')], $data)->id;
         }
 
         if (!$participant->hash) {
-            $participant->hash = Str::uuid();
+            $participant->hash = str_replace('/', '', Hash::make('plain-text'));
         }
     }
 

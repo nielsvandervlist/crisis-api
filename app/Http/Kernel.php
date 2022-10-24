@@ -64,5 +64,6 @@ class Kernel extends HttpKernel
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \App\Http\Middleware\EnsureEmailIsVerified::class,
         'validate' => \Tychovbh\LaravelCrud\Middleware\Validate::class,
+        'online' => \App\Http\Middleware\LastActivityParticipant::class,
     ];
 }

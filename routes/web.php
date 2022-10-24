@@ -1,5 +1,6 @@
 <?php
 
+use App\Routes\ParticipantRoute;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -12,6 +13,8 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+ParticipantRoute::webRoutes();
 
 Route::get('/', function () {
     return ['Laravel' => app()->version()];

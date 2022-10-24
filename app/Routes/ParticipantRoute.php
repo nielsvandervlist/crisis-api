@@ -2,6 +2,7 @@
 
 namespace App\Routes;
 
+use App\Http\Controllers\ParticipantController;
 use Illuminate\Support\Facades\Route;
 use Tychovbh\LaravelCrud\Controller;
 use Tychovbh\LaravelCrud\Routes\Routes;
@@ -21,5 +22,12 @@ class ParticipantRoute implements Routes
         Route::put('/participants/{id}/restore', [Controller::class, 'restore'])->name('participants.restore');
         Route::delete('/participants/{id}', [Controller::class, 'destroy'])->name('participants.destroy');
         Route::delete('/participants/{id}/force', [Controller::class, 'forceDestroy'])->name('participants.forceDestroy');
+    }
+
+    /**
+     * Load web routes
+     */
+    public static function webRoutes(){
+        Route::get('/participants/{hash}/edit', [ParticipantController::class, 'showByHash']);
     }
 }
