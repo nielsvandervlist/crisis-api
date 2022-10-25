@@ -10,6 +10,7 @@ use App\Models\Post;
 use App\Models\Reaction;
 use App\Models\Timeline;
 use App\Models\User;
+use App\Models\UserRole;
 use Database\Factories\ParticipantFactory;
 use Illuminate\Database\Seeder;
 

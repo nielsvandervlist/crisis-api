@@ -25,6 +25,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'role_id',
     ];
 
     /**
@@ -50,6 +51,14 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function role(): hasOne
+    {
+        return $this->hasOne(UserRole::class);
+    }
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany

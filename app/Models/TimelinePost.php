@@ -10,7 +10,7 @@ class TimelinePost extends Model
 {
     use HasFactory, GetParams;
 
-    protected $fillable = ['time','post_id', 'timeline_id'];
+    protected $fillable = ['time','post_id','timeline_id'];
 
     protected $params = ['timeline_id'];
 
