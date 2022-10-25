@@ -43,6 +43,10 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
 });
 
 Route::middleware(['auth:sanctum', 'online'])->get('/user', function (Request $request) {
+
+    $user = $request->user();
+    $user->role = $request->user()->getRoleNames();
+
     return $request->user();
 });
 
