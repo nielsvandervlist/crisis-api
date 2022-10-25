@@ -10,8 +10,6 @@ use App\Models\Post;
 use App\Models\Reaction;
 use App\Models\Timeline;
 use App\Models\User;
-use App\Models\UserRole;
-use Database\Factories\ParticipantFactory;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -28,7 +26,10 @@ class DatabaseSeeder extends Seeder
         Crisis::factory()->create();
         Post::factory()->create();
         Timeline::factory()->create();
-        Reaction::factory()->create();
+//        Reaction::factory()->create();
         Participant::factory()->create();
+        $this->call([
+            RoleAndPermissionSeeder::class,
+        ]);
     }
 }

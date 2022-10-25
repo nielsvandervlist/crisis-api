@@ -10,11 +10,12 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Cache;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Broadcasting\PrivateChannel;
+use Spatie\Permission\Traits\HasRoles;
 use Tychovbh\LaravelCrud\Contracts\GetParams;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable, GetParams;
+    use HasApiTokens, HasFactory, Notifiable, GetParams, HasRoles;
 
     /**
      * The attributes that are mass assignable.
@@ -53,18 +54,12 @@ class User extends Authenticatable
     ];
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
-     */
-    public function role(): hasOne
-    {
-        return $this->hasOne(UserRole::class);
-    }
-
-    /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function participants(): HasMany
     {
         return $this->hasMany(Participant::class);
     }
+
+    //$user->getPermissionNames()
 }

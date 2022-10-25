@@ -31,7 +31,9 @@ class ParticipantObserver
                 'password' => str_replace('/', '', Hash::make('plain-text'))
             ];
 
-            $participant->user_id = User::firstOrCreate(['email' => request()->input('email')], $data)->id;
+            $user = User::firstOrCreate(['email' => request()->input('email')], $data);
+            $user->assignRole('Participant');
+            $participant->user_id = $user->id;
         }
 
         if (!$participant->hash) {

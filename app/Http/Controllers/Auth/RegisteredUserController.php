@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\AppRole;
 use App\Models\User;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
@@ -35,6 +36,8 @@ class RegisteredUserController extends Controller
         ]);
 
         event(new Registered($user));
+
+        $user->assignRole(AppRole::ADMIN_ROLE);
 
         Auth::login($user);
 
