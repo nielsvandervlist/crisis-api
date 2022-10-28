@@ -5,7 +5,9 @@ namespace Tests\Feature;
 use App\Models\Participant;
 use App\Models\Reaction;
 use App\Models\User;
+use App\Notifications\ReactionCreated;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Facades\Notification;
 use Tests\TestCase;
 
 class ReactionTest extends TestCase
@@ -50,4 +52,24 @@ class ReactionTest extends TestCase
                 'data' => $reactions->map->only('id')->toArray()
             ]);
     }
+
+    /**
+     * @test
+     */
+    public function itCanSendNotifications()
+    {
+        $user = User::factory()->create();
+        $participant = Participant::factory()->create([
+            'user_id' => $user->id
+        ]);
+        $reaction = Reaction::factory()->create([
+            'participant_id' => $participant->id,
+        ]);
+
+        $user->notify(new ReactionCreated($reaction));
+
+        Notification::assertSentTo($user, ReactionCreated::class);
+
+    }
+
 }

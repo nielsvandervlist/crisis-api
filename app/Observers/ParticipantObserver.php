@@ -21,9 +21,6 @@ class ParticipantObserver
      */
     public function saving(Participant $participant)
     {
-
-        $test = request()->input('email');
-
         if (request()->input('email')) {
             $data = [
                 'name' => request()->input('name'),

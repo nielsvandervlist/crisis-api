@@ -26,10 +26,7 @@ class DatabaseSeeder extends Seeder
         Crisis::factory()->create();
         Post::factory()->create();
         Timeline::factory()->create();
-//        Reaction::factory()->create();
+        Reaction::factory()->create();
         Participant::factory()->create();
-        $this->call([
-            RoleAndPermissionSeeder::class,
-        ]);
     }
 }

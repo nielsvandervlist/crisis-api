@@ -38,4 +38,10 @@ class AppPermission extends Model
     public const CAN_CREATE_REACTIONS = 'create-reactions';
     public const CAN_UPDATE_REACTIONS = 'update-reactions';
     public const CAN_DELETE_REACTIONS = 'delete-reactions';
+
+    public const CAN_INDEX_RAPPORTS = 'index-rapports';
+    public const CAN_SHOW_RAPPORTS = 'show-rapports';
+    public const CAN_CREATE_RAPPORTS = 'create-rapports';
+    public const CAN_UPDATE_RAPPORTS = 'update-rapports';
+    public const CAN_DELETE_RAPPORTS = 'delete-rapports';
 }

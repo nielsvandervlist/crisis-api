@@ -15,7 +15,7 @@ class PostRoute implements Routes
      */
     public static function routes()
     {
-        Route::middleware('role:Admin')->group(function () {
+        Route::middleware('role:admin|participant')->group(function () {
             Route::get('/posts', [Controller::class, 'index'])->name('posts.index');
             Route::get('/posts/count', [Controller::class, 'count'])->name('posts.count');
             Route::get('/posts/{id}', [Controller::class, 'show'])->name('posts.show');

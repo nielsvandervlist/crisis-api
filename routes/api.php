@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\MessageController;
 use App\Routes\CompanyRoute;
 use App\Routes\CrisisRoute;
 use App\Routes\MessageRoute;
@@ -45,7 +46,13 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
 Route::middleware(['auth:sanctum', 'online'])->get('/user', function (Request $request) {
 
     $user = $request->user();
-    $user->role = $request->user()->getRoleNames();
+    $role = $request->user()->getRoleNames();
+    $user->role = $role;
+
+    if($role[0] === 'participant'){
+        $participant = \App\Models\Participant::query()->where('user_id', $user->id)->get();
+        $user->participant = $participant;
+    }
 
     return $request->user();
 });

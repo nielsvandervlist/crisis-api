@@ -12,7 +12,7 @@ class Participant extends Model
 {
     use HasFactory, GetParams;
 
-    protected $fillable = ['name', 'profile_img', 'participant_role_id', 'user_id', 'company_id', 'hash', 'email'];
+    protected $fillable = ['name', 'profile_img', 'user_id', 'company_id', 'hash', 'email'];
 
     protected $params = ['user_id', 'company_id', 'hash'];
 

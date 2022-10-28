@@ -19,8 +19,6 @@ return new class extends Migration
             $table->string('hash');
             $table->string('email');
             $table->string('profile_img')->nullable();
-            $table->unsignedInteger('participant_role_id');
-            $table->foreign('participant_role_id')->references('id')->on('participant_roles');
             $table->unsignedInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
             $table->unsignedInteger('company_id');

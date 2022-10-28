@@ -2,12 +2,16 @@
 
 namespace App\Notifications;
 
-use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
+use Illuminate\Bus\Queueable;
+use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\BroadcastMessage;
 use Illuminate\Notifications\Notification;
 
-class ReactionCreated extends Notification implements ShouldBroadcast
+class ReactionCreated extends Notification implements ShouldQueue
 {
+    //TODO add redis as database for queue
+    use Queueable;
+
     public $reaction;
 
     /**
@@ -30,7 +34,7 @@ class ReactionCreated extends Notification implements ShouldBroadcast
     }
 
     /**
-     * @param mixed $notifiable
+     * @param $notifiable
      * @return BroadcastMessage
      */
     public function toBroadcast($notifiable)

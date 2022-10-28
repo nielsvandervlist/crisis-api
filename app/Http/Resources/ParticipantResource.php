@@ -18,7 +18,6 @@ class ParticipantResource extends JsonResource
             'name' => $this->name,
             'email' => $this->email,
             'company_id' => $this->company_id,
-            'participant_role_id' => $this->participant_role_id,
             'online' => $this->isOnline(),
         ];
     }

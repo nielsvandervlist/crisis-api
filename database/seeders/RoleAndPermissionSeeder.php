@@ -45,7 +45,7 @@ class RoleAndPermissionSeeder extends Seeder
         ]);
 
         $participantRole->givePermissionTo([
-            //
+            AppPermission::CAN_INDEX_POSTS,
         ]);
     }
 }
