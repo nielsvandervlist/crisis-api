@@ -30,7 +30,7 @@ class ParticipantObserver
 
             $user = User::firstOrCreate(['email' => request()->input('email')], $data);
             $user->assignRole('Participant');
-            $participant->user_id = $user->id;
+            $participant->user_id = auth()->user()->id;
         }
 
         if (!$participant->hash) {

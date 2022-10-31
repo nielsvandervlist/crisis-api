@@ -20,7 +20,7 @@ class TimelinePostFactory extends Factory
     public function definition()
     {
         return [
-            'time' => Carbon::now()->format('Y-m-d h:i:s'),
+            'time' => rand(1, 180),
             'post_id' => Post::factory()->create()->id,
             'timeline_id' => Timeline::factory()->create()->id,
         ];

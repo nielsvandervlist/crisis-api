@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('timeline_posts', function (Blueprint $table) {
             $table->increments('id');
-            $table->dateTime('time');
+            $table->integer('time');
             $table->unsignedInteger('post_id');
             $table->foreign('post_id')->references('id')->on('posts');
             $table->unsignedInteger('timeline_id');

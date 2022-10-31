@@ -10,7 +10,7 @@ class Crisis extends Model
 {
     use HasFactory, GetParams;
 
-    protected $fillable = ['title', 'description', 'company_id', 'user_id', 'status'];
+    protected $fillable = ['title', 'description', 'company_id', 'user_id', 'status', 'company'];
 
     protected $params = ['user_id', 'status'];
 

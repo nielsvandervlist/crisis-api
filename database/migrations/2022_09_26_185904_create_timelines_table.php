@@ -16,8 +16,7 @@ return new class extends Migration
         Schema::create('timelines', function (Blueprint $table) {
             $table->increments('id');
             $table->string('title');
-            $table->dateTime('start_time');
-            $table->dateTime('end_time');
+            $table->integer('duration');
             $table->unsignedInteger('crisis_id');
             $table->foreign('crisis_id')->references('id')->on('crises');
             $table->unsignedInteger('company_id');

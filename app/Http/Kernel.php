@@ -68,5 +68,6 @@ class Kernel extends HttpKernel
         'permission' => \Spatie\Permission\Middlewares\PermissionMiddleware::class,
         'role_or_permission' => \Spatie\Permission\Middlewares\RoleOrPermissionMiddleware::class,
         'online' => \App\Http\Middleware\LastActivityParticipant::class,
+        'whitelist' => \App\Http\Middleware\WhiteListIpAddressesMiddleware::class
     ];
 }

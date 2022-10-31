@@ -10,7 +10,7 @@ class Timeline extends Model
 {
     use HasFactory, GetParams;
 
-    protected $fillable = ['title', 'start_time', 'end_time', 'company_id', 'user_id', 'crisis_id'];
+    protected $fillable = ['title', 'duration', 'company_id', 'user_id', 'crisis_id'];
 
     protected $params = ['user_id', 'company_id', 'crisis_id'];
 

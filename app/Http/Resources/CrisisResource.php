@@ -19,7 +19,11 @@ class CrisisResource extends JsonResource
             'title' => $this->title,
             'description' => $this->description,
             'status' => $this->status,
-//            'company' => $this->company,
+            $this->mergeWhen($request->get('company'), function() use ($request) {
+                return [
+                    'company' => $this->company,
+                ];
+            })
         ];
     }
 }
