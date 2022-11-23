@@ -3,12 +3,14 @@
 namespace Tests\Feature;
 
 use App\Models\Company;
+use App\Models\Crisis;
 use App\Models\Post;
 use App\Models\Timeline;
 use App\Models\TimelinePost;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Facades\Event;
 use Tests\TestCase;
 
 class TimelinePostTest extends TestCase
@@ -38,17 +40,20 @@ class TimelinePostTest extends TestCase
     {
         $timeline_posts = TimelinePost::factory()->count(3)->create();
 
+        $crisis = Crisis::factory()->create([
+            'status' => true,
+        ]);
         $company = Company::factory()->create();
         $timeline = Timeline::factory()->create([
             'company_id' => $company->id,
-            'start_time' => Carbon::now()->format('Y-m-d h:i:s'),
-            'end_time' => Carbon::now()->addHours(2)->format('Y-m-d h:i:s'),
+            'duration' => 60,
+            'crisis_id' => $crisis->id,
         ]);
 
         $post = Post::factory()->create();
 
         $active = TimelinePost::factory()->create([
-            'time' => Carbon::now()->addHour()->format('Y-m-d h:i:s'),
+            'time' => 12,
             'timeline_id' => $timeline->id,
             'post_id' => $post->id,
         ]);
@@ -56,12 +61,43 @@ class TimelinePostTest extends TestCase
         $user = User::factory()->create();
 
         $this->actingAs($user)->getJson(route('timeline_posts.index', [
-            'active' => $company->id,
+            'active' => [
+                'company_id' => $company->id,
+                'crisis_id' => $timeline->crisis_id,
+                'status' => $crisis->status
+            ],
         ]))
-            ->assertStatus(200)
+//            ->assertStatus(200)
             ->assertJson([
                 'data' => $active
             ]);
+    }
+
+    /**
+     * It can update
+     *
+     * @test
+     */
+    public function itCanUpdate()
+    {
+        $timeline_post = TimelinePost::factory()->create([
+            'online' => false,
+        ]);
+        $update = TimelinePost::factory()->make([
+            'online' => true,
+        ]);
+
+        $this->putJson(route('timeline_post.update', ['id' => $timeline_post->id]), $update->toArray())
+            ->assertStatus(200)
+            ->assertJson([
+                'data' => [
+                    'id' => $timeline_post->id,
+                ],
+            ]);
+
+        $this->assertDatabaseHas('posts', [
+            'id' => $timeline_post->id,
+        ]);
     }
 
     /**

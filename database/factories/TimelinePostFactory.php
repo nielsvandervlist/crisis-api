@@ -21,6 +21,7 @@ class TimelinePostFactory extends Factory
     {
         return [
             'time' => rand(1, 180),
+            'online' => $this->faker->boolean,
             'post_id' => Post::factory()->create()->id,
             'timeline_id' => Timeline::factory()->create()->id,
         ];

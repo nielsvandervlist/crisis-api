@@ -18,13 +18,14 @@ return new class extends Migration
             $table->string('title');
             $table->string('description')->nullable();
             $table->string('thumbnail')->nullable();
-            $table->boolean('notification');
-            $table->dateTime('time');
             $table->string('src');
-            $table->unsignedInteger('participant_id');
-            $table->foreign('participant_id')->references('id')->on('participants');
-            $table->unsignedInteger('reaction_type_id');
-            $table->foreign('reaction_type_id')->references('id')->on('reaction_types');
+            $table->integer('score');
+            $table->unsignedInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->unsignedInteger('timeline_post_id');
+            $table->foreign('timeline_post_id')->references('id')->on('timeline_posts');
+            $table->unsignedInteger('crisis_id');
+            $table->foreign('crisis_id')->references('id')->on('crises');
             $table->timestamps();
         });
     }

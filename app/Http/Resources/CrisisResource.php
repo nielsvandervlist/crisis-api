@@ -9,7 +9,7 @@ class CrisisResource extends JsonResource
     /**
      * Transform the resource into an array.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return array|\Illuminate\Contracts\Support\Arrayable|\JsonSerializable
      */
     public function toArray($request)
@@ -19,9 +19,16 @@ class CrisisResource extends JsonResource
             'title' => $this->title,
             'description' => $this->description,
             'status' => $this->status,
-            $this->mergeWhen($request->get('company'), function() use ($request) {
+            $this->mergeWhen($request->get('company'), function () use ($request) {
                 return [
                     'company' => $this->company,
+                ];
+            }),
+            $this->mergeWhen($request->get('timeline'), function () use ($request) {
+                return [
+                    'timeline' => [
+                        'data' => $this->timeline,
+                    ]
                 ];
             })
         ];

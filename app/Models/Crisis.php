@@ -22,4 +22,12 @@ class Crisis extends Model
     {
         return $this->belongsTo(Company::class);
     }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function timeline()
+    {
+        return $this->hasOne(Timeline::class);
+    }
 }

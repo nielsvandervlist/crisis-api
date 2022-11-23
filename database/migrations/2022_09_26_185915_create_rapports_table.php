@@ -13,12 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
+        //TODO verzin nieuwe scores voor het rapport
         Schema::create('rapports', function (Blueprint $table) {
             $table->increments('id');
             $table->string('title');
             $table->string('description')->nullable();
-            $table->unsignedInteger('point_id');
-            $table->foreign('point_id')->references('id')->on('points');
+            $table->integer('reaction_score');
+            $table->integer('sharing_score');
+            $table->integer('content_score');
             $table->unsignedInteger('crisis_id');
             $table->foreign('crisis_id')->references('id')->on('crises');
             $table->timestamps();

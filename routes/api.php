@@ -35,7 +35,6 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     PostTypeRoute::routes();
     PostRoute::routes();
     ReactionRoute::routes();
-    ReactionTypeRoute::routes();
     RapportRoute::routes();
     TimelineRoute::routes();
     TimelinePostRoute::routes();

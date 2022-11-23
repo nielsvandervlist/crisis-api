@@ -10,9 +10,9 @@ class TimelinePost extends Model
 {
     use HasFactory, GetParams;
 
-    protected $fillable = ['time','post_id','timeline_id'];
+    protected $fillable = ['time','post_id','timeline_id', 'online'];
 
-    protected $params = ['timeline_id'];
+    protected $params = ['timeline_id', 'online'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
@@ -22,4 +22,11 @@ class TimelinePost extends Model
        return $this->BelongsTo(Timeline::class);
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function post()
+    {
+        return $this->BelongsTo(Post::class);
+    }
 }

@@ -2,19 +2,19 @@
 
 namespace App\Observers;
 
+use App\Actions\GetActivePost;
+use App\Events\SendPostEvent;
 use App\Models\Crisis;
-use App\Models\Timeline;
-
 class CrisisObserver
 {
-    public function updating(Crisis $crisis)
+    public function updated(Crisis $crisis)
     {
-//        if(!$crisis->status){
-//            return true;
-//        }
-//
-//        $timeline = Timeline::params([
-//            'crisis_id' => $crisis->id
-//        ])->get();
+        if($crisis->status){
+            $timeline_posts = (new GetActivePost())->handler($crisis->timeline);
+            foreach ($timeline_posts as $timeline_post) {
+                $post = $timeline_post->post;
+                event(new SendPostEvent($post));
+            }
+        }
     }
 }

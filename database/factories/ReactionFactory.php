@@ -2,8 +2,9 @@
 
 namespace Database\Factories;
 
-use App\Models\Participant;
-use App\Models\ReactionType;
+use App\Models\Crisis;
+use App\Models\TimelinePost;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -23,10 +24,10 @@ class ReactionFactory extends Factory
             'description' => $this->faker->text,
             'thumbnail' => $this->faker->url,
             'src' => $this->faker->url,
-            'notification' => $this->faker->boolean,
-            'time' => $this->faker->dateTime,
-            'participant_id' => Participant::factory()->create()->id,
-            'reaction_type_id' => ReactionType::factory()->create()->id
+            'score' => rand(1, 10),
+            'timeline_post_id' => TimelinePost::factory()->create()->id,
+            'crisis_id' => Crisis::factory()->create()->id,
+            'user_id' => User::factory()->create()->id,
         ];
     }
 }

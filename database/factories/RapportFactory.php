@@ -21,7 +21,9 @@ class RapportFactory extends Factory
         return [
             'title' => $this->faker->title,
             'description' => $this->faker->text,
-            'point_id' => Point::factory()->create()->id,
+            'reaction_score' => rand(1, 10),
+            'sharing_score' => rand(1, 10),
+            'content_score' => rand(1, 10),
             'crisis_id' => Crisis::factory()->create()->id,
         ];
     }

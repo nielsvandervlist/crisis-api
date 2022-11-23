@@ -22,6 +22,7 @@ class TimelineFactory extends Factory
         return [
             'title' => $this->faker->title,
             'duration' => rand(1, 10),
+            'online' => $this->faker->boolean,
             'crisis_id' => Crisis::factory()->create()->id,
             'company_id' => Company::factory()->create()->id,
             'user_id' => User::factory()->create()->id

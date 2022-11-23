@@ -3,7 +3,6 @@
 namespace App\Providers;
 
 use App\Events\ReactionEvent;
-use App\Listeners\NotifyUserAboutReaction;
 use App\Models\Crisis;
 use App\Models\Participant;
 use App\Models\Post;
@@ -11,6 +10,7 @@ use App\Models\Reaction;
 use App\Models\TimelinePost;
 use App\Observers\CrisisObserver;
 use App\Observers\ParticipantObserver;
+use App\Observers\PostObserver;
 use App\Observers\ReactionObserver;
 use App\Observers\TimelinePostsObserver;
 use Illuminate\Auth\Events\Registered;
@@ -39,6 +39,7 @@ class EventServiceProvider extends ServiceProvider
     public function boot()
     {
         Reaction::observe(ReactionObserver::class);
+        Post::observe(PostObserver::class);
         Participant::observe(ParticipantObserver::class);
         TimelinePost::observe(TimelinePostsObserver::class);
         Crisis::observe(CrisisObserver::class);

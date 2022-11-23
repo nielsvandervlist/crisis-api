@@ -10,7 +10,7 @@ class Timeline extends Model
 {
     use HasFactory, GetParams;
 
-    protected $fillable = ['title', 'duration', 'company_id', 'user_id', 'crisis_id'];
+    protected $fillable = ['title', 'duration', 'company_id', 'user_id', 'crisis_id', 'online'];
 
     protected $params = ['user_id', 'company_id', 'crisis_id'];
 
@@ -28,5 +28,13 @@ class Timeline extends Model
     public function crisis()
     {
         return $this->BelongsTo(Crisis::class);
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function timelinePosts()
+    {
+        return $this->hasMany(TimelinePost::class);
     }
 }

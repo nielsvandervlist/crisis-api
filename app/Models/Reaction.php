@@ -15,11 +15,9 @@ class Reaction extends Model
     protected $fillable = [
         'title',
         'description',
+        'src',
         'thumbnail',
-        'notification',
-        'time',
-        'reaction_type_id',
-        'participant_id'
+        'user_id'
     ];
 
     /**
@@ -28,5 +26,21 @@ class Reaction extends Model
     public function participant(): BelongsTo
     {
         return $this->belongsTo(Participant::class);
+    }
+
+    /**
+     * @return BelongsTo
+     */
+    public function timelinePost(): BelongsTo
+    {
+        return $this->belongsTo(TimelinePost::class);
+    }
+
+    /**
+     * @return BelongsTo
+     */
+    public function crisis(): BelongsTo
+    {
+        return $this->belongsTo(Crisis::class);
     }
 }
