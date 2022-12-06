@@ -11,7 +11,6 @@ use App\Routes\PostRoute;
 use App\Routes\PostTypeRoute;
 use App\Routes\RapportRoute;
 use App\Routes\ReactionRoute;
-use App\Routes\ReactionTypeRoute;
 use App\Routes\TimelinePostRoute;
 use App\Routes\TimelineRoute;
 use Illuminate\Http\Request;
@@ -40,6 +39,7 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     TimelinePostRoute::routes();
     NotificationRoute::routes();
     MessageRoute::routes();
+    NotificationRoute::routes();
 });
 
 Route::middleware(['auth:sanctum', 'online'])->get('/user', function (Request $request) {

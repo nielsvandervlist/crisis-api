@@ -4,19 +4,14 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Tychovbh\LaravelCrud\Contracts\GetParams;
 
 class Notification extends Model
 {
-    use HasFactory;
+    use HasFactory, GetParams;
 
-    protected $fillable = ['title', 'src', 'status', 'participant_id', 'reaction_id'];
+    protected $fillable = ['title', 'src', 'read', 'description'];
 
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
-     */
-    public function reaction()
-    {
-        return $this->hasOne(Reaction::class, 'reactions');
-    }
+    protected $params = ['read'];
 
 }

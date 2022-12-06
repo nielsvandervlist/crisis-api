@@ -57,6 +57,6 @@ class SendPostEvent implements ShouldBroadcast
     public function broadcastOn()
     {
         //TODO Public channel die naar alle participants gaat van de editor
-        return new Channel('timeline-channel' . $this->user->id);
+        return new Channel('timeline-channel');
     }
 }

@@ -21,9 +21,7 @@ class NotificationFactory extends Factory
         return [
             'title' => $this->faker->name,
             'src' => $this->faker->url,
-            'status' => $this->faker->boolean,
-            'participant_id' => Participant::factory()->create()->id,
-            'reaction_id' => Reaction::factory()->create()->id,
+            'read' => $this->faker->boolean,
         ];
     }
 }
