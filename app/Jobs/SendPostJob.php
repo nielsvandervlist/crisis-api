@@ -32,8 +32,8 @@ class SendPostJob implements ShouldQueue
      *
      * @return void
      */
-    public function handle(Post $post)
+    public function handle()
     {
-        SendPostEvent::dispatch($post);
+        event(new SendPostEvent($this->post));
     }
 }

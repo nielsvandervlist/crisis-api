@@ -3,6 +3,7 @@
 namespace App\Observers;
 
 use App\Events\SendPostEvent;
+use App\Jobs\SendPostJob;
 use App\Models\Notification;
 use App\Models\Post;
 
@@ -12,7 +13,7 @@ class PostObserver
     {
         if($post->online){
             //Create post event for
-            event(new SendPostEvent($post));
+            SendPostJob::dispatch($post);
             //Create notification
             $notification = new Notification([
                'title' => $post->title,

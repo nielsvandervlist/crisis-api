@@ -30,7 +30,12 @@ class CrisisResource extends JsonResource
                         'data' => $this->timeline,
                     ]
                 ];
-            })
+            }),
+            $this->mergeWhen($request->get('guest'), function () use ($request) {
+                return [
+                    'posts' => $this->timeline->timelinePosts,
+                ];
+            }),
         ];
     }
 }
