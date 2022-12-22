@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources;
 
+use App\Clients\Spaces;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class PostResource extends JsonResource
@@ -18,6 +19,7 @@ class PostResource extends JsonResource
             'id' => $this->id,
             'title' => $this->title,
             'online' => $this->online,
+            'thumbnail' => Spaces::url($this->thumbnail),
             'description' => $this->description,
             'post_type_id' => $this->post_type_id,
         ];

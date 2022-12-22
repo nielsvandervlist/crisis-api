@@ -21,6 +21,7 @@ class PostFactory extends Factory
         return [
             'title' => $this->faker->title,
             'description' => $this->faker->text,
+            'thumbnail' => $this->faker->image('public/storage/images',400,300, null, false),
             'user_id' => User::factory()->create()->id,
             'post_type_id' => PostType::factory()->create()->id
         ];

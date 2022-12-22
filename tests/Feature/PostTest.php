@@ -10,6 +10,8 @@ use App\Models\TimelinePost;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Facades\Storage;
 use Spatie\Permission\Models\Role;
 use Tests\TestCase;
 
@@ -91,8 +93,8 @@ class PostTest extends TestCase
         $post = Post::factory()->create();
 
         $this->getJson(route('posts.show', [
-                'id' => $post->id,
-            ]))
+            'id' => $post->id,
+        ]))
             ->assertStatus(200)
             ->assertJson([
                 'data' => [
@@ -158,5 +160,23 @@ class PostTest extends TestCase
             ]);
 
         $this->assertDatabaseMissing('posts', ['id' => $post->id]);
+    }
+
+    /**
+     * @test
+     */
+    public function itCanUploadFile()
+    {
+        {
+            Storage::fake('local');
+            $response = $this->json('POST', '/avatar', [
+                'avatar' => UploadedFile::fake()->image('avatar.jpg')
+            ]);
+            // Assert the file was stored...
+            Storage::disk('local')->assertExists('avatar.jpg');
+            // Assert a file does not exist...
+            Storage::disk('local')->assertMissing('missing.jpg');
+
+        }
     }
 }
