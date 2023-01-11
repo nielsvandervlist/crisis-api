@@ -3,6 +3,7 @@
 use App\Http\Controllers\MessageController;
 use App\Routes\CompanyRoute;
 use App\Routes\CrisisRoute;
+use App\Routes\DocumentRoute;
 use App\Routes\MessageRoute;
 use App\Routes\NotificationRoute;
 use App\Routes\ParticipantRoleRoute;
@@ -40,6 +41,7 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     NotificationRoute::routes();
     MessageRoute::routes();
     NotificationRoute::routes();
+    DocumentRoute::routes();
 });
 
 Route::middleware(['auth:sanctum', 'online'])->get('/user', function (Request $request) {

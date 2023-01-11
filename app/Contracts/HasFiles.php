@@ -38,6 +38,11 @@ trait HasFiles
             }
 
             $file = request()->file($name);
+
+            if(is_array($file)){
+                $file = $file[0];
+            }
+
             if (!$file || !is_a($file, UploadedFile::class)) {
                 continue;
             }
