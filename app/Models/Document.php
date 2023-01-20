@@ -12,9 +12,11 @@ class Document extends Model
     use HasFactory, GetParams, HasFiles;
 
     protected $fillable = [
+        'name',
         'crisis_id',
         'user_id',
         'url',
+        'inserted',
     ];
 
     protected array $files = [

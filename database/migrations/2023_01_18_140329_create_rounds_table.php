@@ -13,13 +13,15 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('documents', function (Blueprint $table) {
-            $table->id();
-            $table->string('url');
+        Schema::create('rounds', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('name');
+            $table->string('description');
+            $table->integer('number');
+            $table->unsignedInteger('timeline_id')->nullable();
+            $table->foreign('timeline_id')->references('id')->on('timelines');
             $table->unsignedInteger('crisis_id')->nullable();
             $table->foreign('crisis_id')->references('id')->on('crises');
-            $table->unsignedInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
         });
     }
@@ -31,6 +33,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('documents');
+        Schema::dropIfExists('rounds');
     }
 };

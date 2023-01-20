@@ -8,6 +8,7 @@ use App\Models\Crisis;
 use App\Models\Participant;
 use App\Models\Post;
 use App\Models\Reaction;
+use App\Models\Round;
 use App\Models\Timeline;
 use App\Models\User;
 use Illuminate\Database\Seeder;
@@ -24,6 +25,7 @@ class DatabaseSeeder extends Seeder
         User::factory()->create();
         Company::factory()->create();
         Crisis::factory()->create();
+        Round::factory()->create();
         Post::factory()->create();
         Timeline::factory()->create();
         Reaction::factory()->create();
