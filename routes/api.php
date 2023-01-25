@@ -12,6 +12,7 @@ use App\Routes\PostRoute;
 use App\Routes\PostTypeRoute;
 use App\Routes\RapportRoute;
 use App\Routes\ReactionRoute;
+use App\Routes\RoundRoute;
 use App\Routes\TimelinePostRoute;
 use App\Routes\TimelineRoute;
 use Illuminate\Http\Request;
@@ -41,6 +42,7 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     NotificationRoute::routes();
     MessageRoute::routes();
     NotificationRoute::routes();
+    RoundRoute::routes();
     DocumentRoute::routes();
 });
 
