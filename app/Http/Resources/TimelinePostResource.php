@@ -15,6 +15,7 @@ class TimelinePostResource extends JsonResource
     public function toArray($request)
     {
         return [
+            'id' => $this->id,
             'time' => $this->time,
             'online' => $this->online,
             'post_id' => $this->post_id,
