@@ -32,12 +32,16 @@ class PostTypeSeeder extends Seeder
             'label' => 'Linkedin',
         ]);
         PostType::factory()->create([
-            'name' => 'website',
-            'label' => 'Website',
-        ]);
-        PostType::factory()->create([
             'name' => 'instagram',
             'label' => 'Instagram',
+        ]);
+        PostType::factory()->create([
+            'name' => 'custom',
+            'label' => 'Custom',
+        ]);
+        PostType::factory()->create([
+            'name' => 'image',
+            'label' => 'Image',
         ]);
     }
 }

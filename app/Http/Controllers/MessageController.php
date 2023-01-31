@@ -9,7 +9,6 @@ class MessageController extends Controller
 {
     public function store(Request $request)
     {
-        event(new MessageEvent($request->user, $request->message));
-        return 'ok';
+        event(new MessageEvent($request->user, $request->message, $request->room_id));
     }
 }

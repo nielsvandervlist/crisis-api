@@ -24,6 +24,11 @@ class CrisisResource extends JsonResource
                     'company' => $this->company,
                 ];
             }),
+            $this->mergeWhen($request->get('participants'), function () use ($request) {
+                return [
+                    'participants' => $this->company->participants,
+                ];
+            }),
             $this->mergeWhen($request->get('timeline'), function () use ($request) {
                 return [
                     'timeline' => [

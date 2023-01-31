@@ -1,6 +1,7 @@
 <?php
 
-use App\Http\Controllers\MessageController;
+use App\Http\Controllers\ChatRoomController;
+use App\Routes\ChatRoom;
 use App\Routes\CompanyRoute;
 use App\Routes\CrisisRoute;
 use App\Routes\DocumentRoute;
@@ -44,6 +45,7 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     NotificationRoute::routes();
     RoundRoute::routes();
     DocumentRoute::routes();
+    ChatRoom::routes();
 });
 
 Route::middleware(['auth:sanctum', 'online'])->get('/user', function (Request $request) {
