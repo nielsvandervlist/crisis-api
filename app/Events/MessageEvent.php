@@ -4,8 +4,6 @@ namespace App\Events;
 
 use Illuminate\Broadcasting\Channel;
 use Illuminate\Broadcasting\InteractsWithSockets;
-use Illuminate\Broadcasting\PresenceChannel;
-use Illuminate\Broadcasting\PrivateChannel;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
@@ -61,7 +59,6 @@ class MessageEvent implements ShouldBroadcast
 
     public function handle()
     {
-        // Store the message in Redis
-        (new \Redis)->rpush('chat-room.'.$this->message['chat_room_id'], json_encode($this->message));
+        //
     }
 }

@@ -12,7 +12,7 @@ class Crisis extends Model
 
     protected $fillable = ['title', 'description', 'company_id', 'user_id', 'status', 'company'];
 
-    protected $params = ['user_id', 'status'];
+    protected $params = ['user_id', 'status', 'company_id'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo

@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Models\Timeline;
+use App\Observers\TimelineObserver;
 use function Illuminate\Events\queueable;
 use App\Events\SendPostEvent;
 use App\Listeners\SendPostNotification;
@@ -45,6 +47,7 @@ class EventServiceProvider extends ServiceProvider
         Participant::observe(ParticipantObserver::class);
         TimelinePost::observe(TimelinePostsObserver::class);
         Crisis::observe(CrisisObserver::class);
+        Timeline::observe(TimelineObserver::class);
     }
 
     /**

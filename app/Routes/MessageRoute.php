@@ -13,6 +13,7 @@ class MessageRoute implements Routes
      */
     public static function routes()
     {
+        Route::get('/messages/{id}', [MessageController::class, 'show'])->name('messages.show');
         Route::post('/messages', [MessageController::class, 'store'])->name('messages.store');
     }
 }

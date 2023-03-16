@@ -16,6 +16,8 @@ class Participant extends Model
 
     protected $params = ['user_id', 'company_id', 'hash'];
 
+    protected $hidden = ['hash'];
+
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */

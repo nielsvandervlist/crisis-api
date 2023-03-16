@@ -48,17 +48,18 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     ChatRoom::routes();
 });
 
+
+
 Route::middleware(['auth:sanctum', 'online'])->get('/user', function (Request $request) {
 
     $user = $request->user();
     $role = $request->user()->getRoleNames();
-    $user->role = $role;
 
     if($role[0] === 'participant'){
-        $participant = \App\Models\Participant::query()->where('user_id', $user->id)->get();
+        $participant = \App\Models\Participant::query()->where('name', $user->name)->get();
         $user->participant = $participant;
     }
 
-    return $request->user();
+    return $user;
 });
 

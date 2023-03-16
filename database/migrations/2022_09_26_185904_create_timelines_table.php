@@ -17,6 +17,7 @@ return new class extends Migration
             $table->increments('id');
             $table->string('title');
             $table->integer('duration');
+            $table->integer('time');
             $table->boolean('online');
             $table->unsignedInteger('crisis_id');
             $table->foreign('crisis_id')->references('id')->on('crises');

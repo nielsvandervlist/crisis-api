@@ -19,6 +19,10 @@ class Document extends Model
         'inserted',
     ];
 
+    protected $params = [
+        'user_id'
+    ];
+
     protected array $files = [
         'url' => 'documents/url'
     ];
