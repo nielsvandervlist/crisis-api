@@ -17,7 +17,10 @@ class Reaction extends Model
         'description',
         'src',
         'thumbnail',
-        'user_id'
+        'user_id',
+        'score',
+        'timeline_post_id',
+        'crisis_id'
     ];
 
     /**

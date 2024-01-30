@@ -18,7 +18,7 @@ return new class extends Migration
             $table->integer('time');
             $table->boolean('online');
             $table->unsignedInteger('post_id');
-            $table->foreign('post_id')->references('id')->on('posts');
+            $table->foreign('post_id')->references('id')->on('posts')->onDelete('cascade');
             $table->unsignedInteger('timeline_id');
             $table->foreign('timeline_id')->references('id')->on('timelines');
             $table->timestamps();

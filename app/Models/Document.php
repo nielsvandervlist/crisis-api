@@ -20,7 +20,8 @@ class Document extends Model
     ];
 
     protected $params = [
-        'user_id'
+        'user_id',
+        'crisis_id'
     ];
 
     protected array $files = [
