@@ -2,7 +2,10 @@
 
 namespace App\Jobs;
 
+use App\Actions\GetActivePost;
+use App\Models\Post;
 use App\Models\Timeline;
+use App\Models\TimelinePost;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
@@ -34,9 +37,20 @@ class RunTimelineJob implements ShouldQueue
      */
     public function handle()
     {
-        $this->timeline->time = $this->minute;
+        $this->timeline->time = $this->minute / 60;
         $this->timeline->saveQuietly();
 
-        $posts = $this->timeline->timelinePosts;
+        $post = Post::query()->select('posts.*')
+            ->join('timeline_posts', 'posts.id', 'timeline_posts.post_id')
+            ->join('timelines', 'timelines.id', 'timeline_posts.timeline_id')
+            ->where('timeline_posts.timeline_id', $this->timeline->id)
+            ->where('timeline_posts.time', '<', $this->minute / 60)
+            ->first();
+
+        if ($post) {
+            SendPostJob::dispatch($post);
+//            $post->online = true;
+//            $post->saveQuietly();
+        }
     }
 }

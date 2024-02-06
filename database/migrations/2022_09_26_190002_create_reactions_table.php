@@ -23,9 +23,9 @@ return new class extends Migration
             $table->unsignedInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
             $table->unsignedInteger('timeline_post_id');
-            $table->foreign('timeline_post_id')->references('id')->on('timeline_posts');
+            $table->foreign('timeline_post_id')->references('id')->on('timeline_posts')->onDelete('cascade');
             $table->unsignedInteger('crisis_id');
-            $table->foreign('crisis_id')->references('id')->on('crises');
+            $table->foreign('crisis_id')->references('id')->on('crises')->onDelete('cascade');
             $table->timestamps();
         });
     }

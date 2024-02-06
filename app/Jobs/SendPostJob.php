@@ -34,6 +34,7 @@ class SendPostJob implements ShouldQueue
      */
     public function handle()
     {
+        dd('hello');
         event(new SendPostEvent($this->post));
     }
 }

@@ -12,6 +12,8 @@ class GetActivePost
         return TimelinePost::params(['active' => [
             'company_id' => $timeline->company_id,
             'crisis_id' => $timeline->crisis_id,
+            'time' => $timeline->time,
+            'id' => $timeline->id,
         ]])->get();
     }
 }

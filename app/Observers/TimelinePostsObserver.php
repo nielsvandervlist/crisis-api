@@ -9,8 +9,8 @@ class TimelinePostsObserver
 {
     public function updated(TimelinePost $timeline_post)
     {
-        if($timeline_post->online){
-            event(new SendPostEvent($timeline_post->post));
-        }
+//        if($timeline_post->online){
+//            event(new SendPostEvent($timeline_post->post));
+//        }
     }
 }
