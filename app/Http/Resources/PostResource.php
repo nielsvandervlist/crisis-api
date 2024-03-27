@@ -22,6 +22,7 @@ class PostResource extends JsonResource
             'thumbnail' => Spaces::url($this->thumbnail),
             'description' => $this->description,
             'post_type_id' => $this->post_type_id,
+            'updated_at' => $this->updated_at
         ];
     }
 }

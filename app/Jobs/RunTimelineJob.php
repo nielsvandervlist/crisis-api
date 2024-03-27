@@ -45,12 +45,17 @@ class RunTimelineJob implements ShouldQueue
             ->join('timelines', 'timelines.id', 'timeline_posts.timeline_id')
             ->where('timeline_posts.timeline_id', $this->timeline->id)
             ->where('timeline_posts.time', '<', $this->minute / 60)
+            ->whereNull('posts.online')
             ->first();
 
         if ($post) {
             SendPostJob::dispatch($post);
-//            $post->online = true;
-//            $post->saveQuietly();
+            $post->online = 1;
+            $post->saveQuietly();
         }
+    }
+
+    public function timelineTime(){
+        return TimelinePost::query()->where('post_id', $this->post->id)->get()->timeline();
     }
 }
